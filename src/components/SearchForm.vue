@@ -20,24 +20,23 @@
           <div v-if="loading">
             <h4>Loading.......</h4>
           </div>
-          <div v-if="results.name" class="media mt-5">
+          <div v-if="results" class="media mt-5">
             <img
               v-if="results.avatar_url"
               :src="results.avatar_url"
               height="130"
               width="130"
               class="mr-3"
-              alt
+              @click="repos"
             />
             <div class="media-body">
               <h5 class="mt-0">
                 <a @click="repos">{{ results.name }}</a>
-                <li class="text-danger mt-1">{{ results.type }}</li>
+                <li @click="repos" class="text-danger mt-1" v-if="results.type">{{ results.type }}</li>
               </h5>
               {{ results.bio}}
               <span>
-                Website:
-                <a :href="results.blog">{{ results.blog }}</a>
+                <a :href="results.blog" v-if="results.blog">Website: {{ results.blog }}</a>
               </span>
             </div>
           </div>
@@ -90,6 +89,12 @@ export default {
 <style scoped>
 .media-body a {
   color: blue;
+  cursor: pointer;
+}
+li {
+  cursor: pointer;
+}
+img {
   cursor: pointer;
 }
 </style>

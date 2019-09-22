@@ -14,5 +14,8 @@ export default {
   },
   getContents(name, repo, content) {
     return axios.get(`${URL}/repos/${name}/${repo}/contents/${content}`);
+  },
+  getHistory(name, repo) {
+    return axios.get(`${URL}/repos/${name}/${repo}/commits`);
   }
 };

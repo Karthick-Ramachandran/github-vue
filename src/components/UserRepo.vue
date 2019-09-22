@@ -8,7 +8,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ repos.name }}</h5>
           <p class="card-text">{{ repos.description }}</p>
-          <a target="_blank" :href="repos.clone_url" class="card-link">Visit the Repo</a>
+          <a @click="commits(repos.name)" class="card-link">Commit History</a>
           <a @click="visitRepo(repos.name)" class="card-link">View Contents</a>
         </div>
       </div>
@@ -48,12 +48,15 @@ export default {
       this.repo = repos.data;
       this.loading = false;
     },
-    async nextPage() {
+    nextPage() {
       this.page += 1;
       this.getRepos();
     },
     visitRepo(repo) {
       router.push(`/${this.name}/${repo}`);
+    },
+    commits(repo) {
+      router.push(`/${this.name}/${repo}/history/commits`);
     }
   },
   computed: {

@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import UserRepo from "./components/UserRepo";
 import Repo from "./components/Repo";
 import Content from "./components/Content";
+import Commit from "./components/Commit";
 
 Vue.use(VueRouter);
 export const router = new VueRouter({
@@ -27,6 +28,11 @@ export const router = new VueRouter({
     {
       path: "/:name/:repo/:content",
       component: Content,
+      props: true
+    },
+    {
+      path: "/:name/:repo/history/commits",
+      component: Commit,
       props: true
     }
   ]
